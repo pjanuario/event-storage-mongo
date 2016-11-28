@@ -1,0 +1,32 @@
+{
+  "name": "micro-toolkit-event-storage-mongo",
+  "version": "1.0.0",
+  "description": "A mongodb implementation of the event storage interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "micro-toolkit",
+    "zeromq",
+    "pub-sub",
+    "microservices",
+    "event",
+    "storage"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micro-toolkit/event-storage-mongo.git"
+  },
+  "author": "Pedro Januário <prnjanuario@gmail.com> (http://shared-mind.tumblr.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micro-toolkit/event-storage-mongo/issues"
+  },
+  "homepage": "https://github.com/micro-toolkit/event-storage-mongo#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "lodash": "^4.17.2",
+    "mongoose": "^4.7.0"
+  }
+}
