@@ -131,10 +131,10 @@ describe('Event Storage Test', function () {
 
       it('will give an error describing the sequence is missing when no sequence is given', function () {
         var payload = _.omit(blueprints.event, 'sequence')
-				var expected = 'The following parameters were missing or invalid: sequence'
+        var expected = 'The following parameters were missing or invalid: sequence'
 
         return instance.insert(null, payload.raw).should.eventually.be.rejectedWith(expected)
-			})
+      })
 
       it('will give an error when no raw value is given', function () {
         var payload = _.omit(blueprints.event, 'raw')
@@ -144,10 +144,10 @@ describe('Event Storage Test', function () {
 
       it('will give an error describing the raw is missing when no raw is given', function () {
         var payload = _.omit(blueprints.event, 'sequence')
-				var expected = 'The following parameters were missing or invalid: raw'
+        var expected = 'The following parameters were missing or invalid: raw'
 
         return instance.insert(payload.sequence, null).should.eventually.be.rejectedWith(expected)
-			})
+      })
     })
   })
 })
