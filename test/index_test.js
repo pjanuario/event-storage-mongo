@@ -121,5 +121,20 @@ describe('Event Storage Test', function () {
         })
       })
     })
+
+
+    describe('when the payload is incomplete', function () {
+      it('will give an error when no sequence is given', function () {
+        var payload = _.omit(blueprints.event, 'sequence')
+
+        return instance.insert(null, payload.raw).should.eventually.be.rejected
+      })
+
+      it('will give an error when no raw value is given', function () {
+        var payload = _.omit(blueprints.event, 'raw')
+
+        return instance.insert(payload.sequence).should.eventually.be.rejected
+      })
+    })
   })
 })
