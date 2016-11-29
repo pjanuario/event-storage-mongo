@@ -1,4 +1,5 @@
 var factory = require('./index')
+var Promise = require('bluebird')
 
 var instance = factory.getInstance('mongodb://localhost/event_sample')
 
@@ -18,16 +19,16 @@ Promise.all(promises)
     // that will be fullfilled with events with higher sequence
     return instance.get(0)
   })
-  .then(console.log)
+  .then(console.log) //eslint-disable-line no-console
   .then(function () {
     return instance.get(1)
   })
-  .then(console.log)
+  .then(console.log) //eslint-disable-line no-console
   .then(function () {
     return instance.get(4)
   })
-  .then(console.log)
+  .then(console.log) //eslint-disable-line no-console
   .then(function () {
     return instance.get(5)
   })
-  .then(console.log)
+  .then(console.log) //eslint-disable-line no-console

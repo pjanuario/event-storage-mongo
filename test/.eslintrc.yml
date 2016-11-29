@@ -1,0 +1,13 @@
+env:
+  node: true
+  mocha: true
+rules:
+  "node/no-unpublished-require": [2, {
+    allowModules: ["chai", "chai-as-promised", "mocha-mongoose"]
+  }]
+globals:
+  should: true
+  sinon: true
+  _: true
+  match: true
+  testConfig: true
