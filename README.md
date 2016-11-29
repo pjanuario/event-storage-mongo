@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/micro-toolkit/event-storage-mongo.svg?branch=master)](https://travis-ci.org/micro-toolkit/event-storage-mongo)
+
 # Micro-toolkit Event Storage MongoDB
 
 A mongodb implementation of the event storage interface.
