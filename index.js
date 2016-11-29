@@ -1,6 +1,7 @@
 var mongoose = require('mongoose')
 var Promise = require('bluebird')
 var _ = require('lodash')
+var util = require('util')
 
 var EventModel = require('./lib/event_model')
 
@@ -22,8 +23,19 @@ function get(EventModel, sequence) {
 function insert(EventModel, sequence, raw) {
   return new EventModel({
     sequence: sequence,
-    raw: raw
-  }).save()
+    raw: raw || null //mixed type does not deal with undefined
+  }).save().catch(function (error) {
+    var isMongooseError = _.get(error, 'name') === 'ValidationError'
+
+    if (isMongooseError) {
+      var propertiesInvalid = _.keys(_.get(error, 'errors'))
+      var propertiesInvalidText = propertiesInvalid.join(',')
+      var message = util.format('The following parameters were missing or invalid: %s',
+        propertiesInvalidText)
+      throw new Error(message)
+    }
+    throw error
+  })
 }
 
 function getInstance(url) {
