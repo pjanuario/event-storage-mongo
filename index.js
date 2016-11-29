@@ -1,15 +1,10 @@
 var mongoose = require('mongoose')
 var Promise = require('bluebird')
 var _ = require('lodash')
-var mongooseSchema = mongoose.Schema
+
+var EventModel = require('./lib/event_model')
 
 mongoose.Promise = Promise
-
-var schema = mongooseSchema({
-  sequence: { type: Number, min: 1, index: true },
-  created: { type: Date, default: Date.now },
-  raw: mongoose.Schema.Types.Mixed
-})
 
 function get(EventModel, sequence) {
   return EventModel.find()
@@ -32,7 +27,6 @@ function insert(EventModel, sequence, raw) {
 }
 
 function getInstance(url) {
-  var EventModel = mongoose.model('Event', schema)
   mongoose.connect(url)
 
   return {

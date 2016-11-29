@@ -4,7 +4,9 @@
   "description": "A mongodb implementation of the event storage interface",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test istanbul cover node_modules/mocha/bin/_mocha",
+    "test-debug": "NODE_ENV=test mocha --watch",
+    "lint": "eslint ."
   },
   "keywords": [
     "micro-toolkit",
@@ -28,5 +30,14 @@
     "bluebird": "^3.4.6",
     "lodash": "^4.17.2",
     "mongoose": "^4.7.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "eslint": "^3.11.0",
+    "eslint-plugin-node": "^3.0.4",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "mocha-mongoose": "^1.2.0"
   }
 }
