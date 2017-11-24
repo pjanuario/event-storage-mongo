@@ -19,6 +19,18 @@ function get(EventModel, sequence) {
     })
 }
 
+function lastSequence(EventModel) {
+  return EventModel.find()
+    .sort('-sequence')
+    .limit(1)
+    .select('sequence')
+    .exec()
+    .then(function (entries) {
+      var entry = _.first(entries, null) || null
+      return _.get(entry, 'sequence') || null
+    })
+}
+
 function insert(EventModel, sequence, raw) {
   return new EventModel({
     sequence: sequence,
@@ -31,6 +43,7 @@ function getInstance(url) {
 
   return {
     get: _.partial(get, EventModel),
+    lastSequence: _.partial(lastSequence, EventModel),
     insert: _.partial(insert, EventModel)
   }
 }

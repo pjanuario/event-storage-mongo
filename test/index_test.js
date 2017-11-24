@@ -27,6 +27,7 @@ describe('Event Storage Test', function () {
       var instance = target.getInstance(DB_URI)
       instance.should.have.property('insert')
       instance.should.have.property('get')
+      instance.should.have.property('lastSequence')
     })
   })
 
@@ -90,6 +91,43 @@ describe('Event Storage Test', function () {
       it('should return the events sorted by sequence', function () {
         var expected = ['message', 'nomessage']
         return instance.get(0).should.eventually.eql(expected)
+      })
+    })
+  })
+
+  describe('getInstance#lastSequence', function () {
+    describe('when no events exist', function () {
+      it('should return null', function () {
+        var instance = target.getInstance(DB_URI)
+        return instance.lastSequence().should.eventually.eql(null)
+      })
+    })
+
+    describe('when an event exists', function () {
+      var instance
+
+      beforeEach(function () {
+        instance = target.getInstance(DB_URI)
+        return repoHelper.create(blueprints.event)
+      })
+
+      it('should return the event sequence', function () {
+        return instance.lastSequence().should.eventually.eql(1)
+      })
+    })
+
+    describe('when multiple events exists', function () {
+      var instance
+
+      beforeEach(function () {
+        instance = target.getInstance(DB_URI)
+        var firstEvent = _.cloneDeep(blueprints.event)
+        var secondEvent = _.merge({}, firstEvent, {sequence: 2, raw: 'nomessage'})
+        return Promise.map([firstEvent, secondEvent], repoHelper.create)
+      })
+
+      it('should return the last event sequence', function () {
+        return instance.lastSequence().should.eventually.eql(2)
       })
     })
   })

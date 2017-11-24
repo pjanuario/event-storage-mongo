@@ -42,4 +42,8 @@ Promise.all(promises)
     return instance.get(5)
   })
   .then(console.log)
+  .then(function () {
+    return instance.lastSequence()
+  })
+  .then(console.log)
 ```
