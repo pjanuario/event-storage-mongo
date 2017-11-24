@@ -32,3 +32,7 @@ Promise.all(promises)
     return instance.get(5)
   })
   .then(console.log) //eslint-disable-line no-console
+  .then(function () {
+    return instance.lastSequence()
+  })
+  .then(console.log) //eslint-disable-line no-console
