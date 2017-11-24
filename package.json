@@ -27,17 +27,17 @@
   },
   "homepage": "https://github.com/micro-toolkit/event-storage-mongo#readme",
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "lodash": "^4.17.2",
-    "mongoose": "^4.7.0"
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.13.4"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "eslint": "^3.11.0",
-    "eslint-plugin-node": "^3.0.4",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.11.0",
+    "eslint-plugin-node": "^5.2.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.1",
     "mocha-mongoose": "^1.2.0"
   }
 }
